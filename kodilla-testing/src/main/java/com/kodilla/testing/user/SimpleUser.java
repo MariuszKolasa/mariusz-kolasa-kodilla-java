@@ -1,13 +1,25 @@
-package com.kodilla.testing.user;
+package com.kodilla.testing;
 
-public class SimpleUser {
-    private String username;
+import com.kodilla.testing.user.SimpleUser;
 
-    public SimpleUser(String username) {
-        this.username = username;
-    }
+public class TestingMain {
+    public static void main(String[] args){
+        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
-    public String getUsername() {
-        return username;
+        String result = simpleUser.getUsername();
+
+        if (result.equals("theForumUser")){
+            System.out.println("test OK");
+        } else {
+            System.out.println("Error!");
+        }
+
+        // tu umieść kolejny test ->
+        System.out.println("Test - pierwszy test jednostkowy:");
+
+
+           ...
+
+
     }
 }
