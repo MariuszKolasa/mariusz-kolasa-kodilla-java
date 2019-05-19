@@ -2,9 +2,8 @@ plugins {
     id 'java'
 }
 
-plugins {
-    id 'java'
-}
+
+apply plugin: 'io.spring.dependency-management'
 
 group 'com.kodilla'
 version '0.0.1-SNAPSHOT'
@@ -28,5 +27,6 @@ repositories {
 }
 
 dependencies {
+    compile ('org.springframework.boot:spring-boot-starter-web')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

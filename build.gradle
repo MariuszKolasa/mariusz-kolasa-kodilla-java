@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'java'
 }
-
+apply plugin: 'java'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.kodilla'
@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile ('org.springframework.boot:spring-boot-starter-web')
+
+    testCompile ('junit:junit:4.12')
 }
