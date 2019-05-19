@@ -35,17 +35,16 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorNormalList(){
         //Given
         ArrayList<Integer> numbers=new ArrayList<>();
-        OddNumbersExterminator oddNumbersExterminator=new OddNumbersExterminator();
-        //When
         for(Integer i=0; i<10; i++){
             numbers.add(i);
         }
+        OddNumbersExterminator oddNumbersExterminator=new OddNumbersExterminator();
+        //When
         ArrayList<Integer> resultList=new ArrayList<>();
         resultList.add(0);
         resultList.add(2);
         resultList.add(4);
         resultList.add(6);
-
         resultList.add(8);
         //Then
         System.out.println("testuję dla nie pustego zbioru " );
