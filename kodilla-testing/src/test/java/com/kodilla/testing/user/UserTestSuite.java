@@ -1,7 +1,7 @@
-package com.kodilla.testing.forum;
+package com.kodilla.testing.user;
 import com.kodilla.testing.user.SimpleUser;
 import org.junit.*;
-public class ForumTestSuite {
+public class UserTestSuite {
     @Before
     public void before(){
         System.out.println("Test Case: begin");
