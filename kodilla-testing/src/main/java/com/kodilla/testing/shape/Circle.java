@@ -1,14 +1,12 @@
 package com.kodilla.testing.shape;
 
-public class Triangle implements Shape{
+public class Circle implements Shape{
     String shapeName;
     int a;
-    int h;
 
-    public Triangle(String shapeName, int a, int h) {
+    public Circle(String shapeName, int a) {
         this.shapeName = shapeName;
         this.a = a;
-        this.h = h;
     }
 
     @Override
@@ -18,8 +16,7 @@ public class Triangle implements Shape{
 
     @Override
     public double getField() {
-        double f=a*h;
-        double shapeField=f/2;
+        double shapeField=a*a*3.14;
         return shapeField;
     }
 }
