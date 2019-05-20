@@ -18,6 +18,8 @@ public class Triangle implements Shape{
 
     @Override
     public double getField() {
-        return double shapeField=1/2*a*h;
+        double f=a*h;
+        double shapeField;
+        return shapeField=f/2;
     }
 }
