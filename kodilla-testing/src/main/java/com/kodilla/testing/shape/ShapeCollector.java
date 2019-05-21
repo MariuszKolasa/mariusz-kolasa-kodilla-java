@@ -13,14 +13,22 @@ public class ShapeCollector {
     public void addFigure(Shape shape){
 
     }
-   public boolean removeFigure(Shape shape){
-    return false;
+    public int getShapesQuantity(){
+        return 33;
+
     }
-    public Shape getFigure(int n){
-    return null;
+
+   public boolean removeFigure(Shape shape){
+
+        return false;
+    }
+    public Shape getFigure(int i){
+
+        return null;
     }
     public Shape showFigures(){
 
         return null;
     }
+
 }
