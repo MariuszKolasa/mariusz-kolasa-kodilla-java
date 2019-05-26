@@ -4,31 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeCollector {
-    List shapes= new ArrayList<Shape>();
+   private List <Shape> shapes= new ArrayList<>();
 
-    public ShapeCollector(List shapes) {
-        this.shapes = shapes;
-    }
 
     public void addFigure(Shape shape){
+        shapes.add(shape);
 
     }
     public int getShapesQuantity(){
-        return 33;
+
+       return  shapes.size();
 
     }
 
-   public boolean removeFigure(Shape shape){
-
-        return false;
-    }
+   public boolean removeFigure(Shape shape) {
+       if (shapes.contains(shape)) {
+           shapes.remove(shape);
+           return true;
+       } else {
+           return false;
+       }
+   }
     public Shape getFigure(int i){
+        Shape s=null;
+        if(i>=0&&i<shapes.size()) {
 
-        return null;
+            s = shapes.get(i);
+        }
+            return s;
     }
-    public Shape showFigures(){
 
-        return null;
+
+    public List<Shape> showFigures(){
+        return shapes;
     }
 
 }
