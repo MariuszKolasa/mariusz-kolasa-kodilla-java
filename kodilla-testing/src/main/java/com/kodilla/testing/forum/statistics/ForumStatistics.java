@@ -4,8 +4,8 @@ package com.kodilla.testing.forum.statistics;
 public class ForumStatistics {
 
     private static int usersQuantity;
-    private static int postsQuantity;
-    private static int commentsQuantity;
+    private static double postsQuantity;
+    private static double commentsQuantity;
     private static double avaragePostsPerUser;
     private static double avarageCommentsPerUser;
     private static double avarageCommentsPerPost;
@@ -15,16 +15,16 @@ public class ForumStatistics {
         ForumStatistics.usersQuantity = usersQuantity;
     }
 
-    public static void setPostsQuantity(int postsQuantity) {
+    public static void setPostsQuantity(double postsQuantity) {
         ForumStatistics.postsQuantity = postsQuantity;
     }
 
-    public static void setCommentsQuantity(int commentsQuantity) {
+    public static void setCommentsQuantity(double commentsQuantity) {
         ForumStatistics.commentsQuantity = commentsQuantity;
     }
 
     public static void setAvaragePostsPerUser(double avaragePostsPerUser) {
-        ForumStatistics.avaragePostsPerUser = avaragePostsPerUser;
+        ForumStatistics.avaragePostsPerUser = (float) avaragePostsPerUser;
     }
 
     public static void setAvarageCommentsPerUser(double avarageCommentsPerUser) {
@@ -39,11 +39,11 @@ public class ForumStatistics {
         return usersQuantity;
     }
 
-    public static int getPostsQuantity() {
+    public static double getPostsQuantity() {
         return postsQuantity;
     }
 
-    public static int getCommentsQuantity() {
+    public static double getCommentsQuantity() {
         return commentsQuantity;
     }
 
@@ -60,32 +60,27 @@ public class ForumStatistics {
     }
 
     public static void calculateAdvStatistics(Statistics statistics) {
-        if (usersQuantity > 0 && postsQuantity > 0) {
-            setUsersQuantity(statistics.usersNames().size());
-            setPostsQuantity(statistics.postsCount());
-            setCommentsQuantity(statistics.commentsCount());
+        setUsersQuantity(statistics.usersNames().size());
+        setPostsQuantity(statistics.postsCount());
+        setCommentsQuantity(statistics.commentsCount());
+        if ((usersQuantity > 0) && (postsQuantity > 0)) {
+
             setAvaragePostsPerUser(postsQuantity / usersQuantity);
             setAvarageCommentsPerUser(commentsQuantity / usersQuantity);
             setAvarageCommentsPerPost(commentsQuantity / postsQuantity);
         } else if (usersQuantity == 0 && postsQuantity > 0) {
-            setUsersQuantity(statistics.usersNames().size());
-            setPostsQuantity(statistics.postsCount());
-            setCommentsQuantity(statistics.commentsCount());
+
             setAvaragePostsPerUser(0);
             setAvarageCommentsPerUser(0);
             setAvarageCommentsPerPost(commentsQuantity / postsQuantity);
         } else if (usersQuantity > 0 && postsQuantity == 0) {
 
-            setUsersQuantity(statistics.usersNames().size());
-            setPostsQuantity(statistics.postsCount());
-            setCommentsQuantity(statistics.commentsCount());
+
             setAvaragePostsPerUser(0);
             setAvarageCommentsPerUser(commentsQuantity / usersQuantity);
             setAvarageCommentsPerPost(0);
         } else if (usersQuantity == 0 && postsQuantity == 0) {
-            setUsersQuantity(statistics.usersNames().size());
-            setPostsQuantity(statistics.postsCount());
-            setCommentsQuantity(statistics.commentsCount());
+
             setAvaragePostsPerUser(0);
             setAvarageCommentsPerUser(0);
             setAvarageCommentsPerPost(0);
