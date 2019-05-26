@@ -129,7 +129,7 @@ public class BookDirectoryTestSuite {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf5Books = generateListOfNBooks(0);
+        List<Book> resultListOf5Books = generateListOfNBooks(5);
 
         LibraryUser libraryUser = new LibraryUser("Janusz", "Nosacz", "1234567891011");
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOf5Books);
