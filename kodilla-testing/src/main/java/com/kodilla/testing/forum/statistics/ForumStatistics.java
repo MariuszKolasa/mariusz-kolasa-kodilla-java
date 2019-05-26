@@ -11,55 +11,55 @@ public class ForumStatistics {
     private static double avarageCommentsPerPost;
 
 
-    public static void setUsersQuantity(int usersQuantity) {
+    public  void setUsersQuantity(int usersQuantity) {
         ForumStatistics.usersQuantity = usersQuantity;
     }
 
-    public static void setPostsQuantity(double postsQuantity) {
+    public  void setPostsQuantity(double postsQuantity) {
         ForumStatistics.postsQuantity = postsQuantity;
     }
 
-    public static void setCommentsQuantity(double commentsQuantity) {
+    public  void setCommentsQuantity(double commentsQuantity) {
         ForumStatistics.commentsQuantity = commentsQuantity;
     }
 
-    public static void setAvaragePostsPerUser(double avaragePostsPerUser) {
+    public  void setAvaragePostsPerUser(double avaragePostsPerUser) {
         ForumStatistics.avaragePostsPerUser = (float) avaragePostsPerUser;
     }
 
-    public static void setAvarageCommentsPerUser(double avarageCommentsPerUser) {
+    public  void setAvarageCommentsPerUser(double avarageCommentsPerUser) {
         ForumStatistics.avarageCommentsPerUser = avarageCommentsPerUser;
     }
 
-    public static void setAvarageCommentsPerPost(double avarageCommentsPerPost) {
+    public  void setAvarageCommentsPerPost(double avarageCommentsPerPost) {
         ForumStatistics.avarageCommentsPerPost = avarageCommentsPerPost;
     }
 
-    public static int getUsersQuantity() {
+    public  int getUsersQuantity() {
         return usersQuantity;
     }
 
-    public static double getPostsQuantity() {
+    public  double getPostsQuantity() {
         return postsQuantity;
     }
 
-    public static double getCommentsQuantity() {
+    public  double getCommentsQuantity() {
         return commentsQuantity;
     }
 
-    public static double getAvaragePostsPerUser() {
+    public  double getAvaragePostsPerUser() {
         return avaragePostsPerUser;
     }
 
-    public static double getAvarageCommentsPerUser() {
+    public  double getAvarageCommentsPerUser() {
         return avarageCommentsPerUser;
     }
 
-    public static double getAvarageCommentsPerPost() {
+    public  double getAvarageCommentsPerPost() {
         return avarageCommentsPerPost;
     }
 
-    public static void calculateAdvStatistics(Statistics statistics) {
+    public  void calculateAdvStatistics(Statistics statistics) {
         setUsersQuantity(statistics.usersNames().size());
         setPostsQuantity(statistics.postsCount());
         setCommentsQuantity(statistics.commentsCount());
