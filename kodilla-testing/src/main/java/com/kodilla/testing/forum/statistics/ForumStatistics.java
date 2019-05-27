@@ -3,36 +3,36 @@ package com.kodilla.testing.forum.statistics;
 
 public class ForumStatistics {
 
-    private static int usersQuantity;
-    private static double postsQuantity;
-    private static double commentsQuantity;
-    private static double avaragePostsPerUser;
-    private static double avarageCommentsPerUser;
-    private static double avarageCommentsPerPost;
+    private  int usersQuantity;
+    private  double postsQuantity;
+    private  double commentsQuantity;
+    private  double avaragePostsPerUser;
+    private  double avarageCommentsPerUser;
+    private  double avarageCommentsPerPost;
 
 
-    public  void setUsersQuantity(int usersQuantity) {
-        ForumStatistics.usersQuantity = usersQuantity;
+    public void setUsersQuantity(int usersQuantity) {
+        this.usersQuantity = usersQuantity;
     }
 
-    public  void setPostsQuantity(double postsQuantity) {
-        ForumStatistics.postsQuantity = postsQuantity;
+    public void setPostsQuantity(double postsQuantity) {
+        this.postsQuantity = postsQuantity;
     }
 
-    public  void setCommentsQuantity(double commentsQuantity) {
-        ForumStatistics.commentsQuantity = commentsQuantity;
+    public void setCommentsQuantity(double commentsQuantity) {
+        this.commentsQuantity = commentsQuantity;
     }
 
-    public  void setAvaragePostsPerUser(double avaragePostsPerUser) {
-        ForumStatistics.avaragePostsPerUser = (float) avaragePostsPerUser;
+    public void setAvaragePostsPerUser(double avaragePostsPerUser) {
+        this.avaragePostsPerUser = avaragePostsPerUser;
     }
 
-    public  void setAvarageCommentsPerUser(double avarageCommentsPerUser) {
-        ForumStatistics.avarageCommentsPerUser = avarageCommentsPerUser;
+    public void setAvarageCommentsPerUser(double avarageCommentsPerUser) {
+        this.avarageCommentsPerUser = avarageCommentsPerUser;
     }
 
-    public  void setAvarageCommentsPerPost(double avarageCommentsPerPost) {
-        ForumStatistics.avarageCommentsPerPost = avarageCommentsPerPost;
+    public void setAvarageCommentsPerPost(double avarageCommentsPerPost) {
+        this.avarageCommentsPerPost = avarageCommentsPerPost;
     }
 
     public  int getUsersQuantity() {
