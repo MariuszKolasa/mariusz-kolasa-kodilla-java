@@ -141,7 +141,7 @@ public class BoardTestSuite {
         //When
         double averageWorkingOnTask =project.getTaskLists().stream()
                 .flatMap(tl->tl.getTasks().stream())
-                .map(t->t.getDeadline().getDayOfYear()-t.getCreated().getDayOfYear())
+                .map(t->t.getDeadline().toEpochDay()-t.getCreated().toEpochDay())
                 .mapToDouble(t->t)
                 .average()
                 .getAsDouble();
