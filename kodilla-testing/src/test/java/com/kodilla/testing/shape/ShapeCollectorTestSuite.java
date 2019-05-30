@@ -1,6 +1,6 @@
 package com.kodilla.testing.shape;
 
-import com.kodilla.testing.shape.ShapeCollector;
+
 import org.junit.*;
 
 import java.util.LinkedList;
