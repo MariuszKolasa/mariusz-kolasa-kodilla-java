@@ -23,10 +23,10 @@ public class ArrayOperationsTestSuite {
     public void getAverageTestForEmptyArray() {
         //Given
         int[] numbers = new int[0];
-        numbers=null;
+
 
         //When
-     Double resoult =  ArrayOperations.getAverage(null);
+     Double resoult =  ArrayOperations.getAverage(numbers);
         //Then
         Assert.assertEquals(0,resoult,0.1);
 

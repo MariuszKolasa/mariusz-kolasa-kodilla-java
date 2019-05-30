@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 public interface ArrayOperations {
     static double getAverage(int[] numbers){
-        if (numbers==null){
+        if (numbers.length==0){
         return 0.0;
         }else {
 
