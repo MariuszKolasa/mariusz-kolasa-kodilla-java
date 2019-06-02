@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,10 +145,10 @@ public class BoardTestSuite {
         double averageWorkingOnTask = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl->tl.getTasks().stream())
-                .map(t->LocalDate.now().toEpochDay()-t.getCreated().toEpochDay())
+                .map(t-> ChronoUnit.DAYS.between(t.getCreated(),LocalDate.now()))
                 .mapToDouble(t->t)
-                .average()
-                .getAsDouble();
+                .average().orElse(0);
+
 
 
 

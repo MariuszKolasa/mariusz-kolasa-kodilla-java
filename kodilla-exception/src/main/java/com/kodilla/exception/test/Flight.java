@@ -34,7 +34,7 @@ public class Flight {
         flightsMap.put("airport8",false);
 
         String targetAirport = flight.getArrivalAirport();
-        if(flightsMap.get(targetAirport)==true){
+        if(flightsMap.containsKey(targetAirport)){
             return targetAirport;
         }else{
             throw new RouteNotFoundException();
