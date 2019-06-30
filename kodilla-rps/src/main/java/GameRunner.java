@@ -1,31 +1,35 @@
 public class GameRunner {
     public static void main(String[] args) {
-        GameMesseges messeges = new GameMesseges();
-        GameProcessor gameProcessor = new GameProcessor();
+        GameMessages messages = new GameMessages();
+        GameProcessor game= new GameProcessor();
         GameProcessValidator validator = new GameProcessValidator();
         boolean end = false;
 
 
-        messeges.welcomeMessage();
+        messages.welcomeMessage();
 
 
         while (!end) {
-            int rundsNumber = 0;
+            int roundsNumber;
 
             String name;
-            messeges.showMenu1();
-            end=validator.endGameValidator();
+            messages.showMenu1();
+           if(validator.endGameValidator()){
+              end=true;
+           }
 
-            messeges.askForPlayerName();
-            name = gameProcessor.scan();
+            messages.askForPlayerName();
+            name = game.scan();
             Player player = new Player(name);
-            messeges.askForNumberOfRounds();
-            rundsNumber = gameProcessor.scanInt();
-            validator.roundsNumberValidator(rundsNumber);
-            gameProcessor.startGame(rundsNumber);
+            GameProcessor gameProcessor = new GameProcessor(player);
 
-            messeges.showNewGameConfirmationMessage();
+            messages.askForNumberOfRounds();
+            roundsNumber = gameProcessor.scanInt();
+            validator.roundsNumberValidator(roundsNumber);
+            gameProcessor.startGame(roundsNumber);
             validator.newGameValidator();
+
+
         }
 
 

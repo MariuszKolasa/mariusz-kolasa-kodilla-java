@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class FigureGenerator {
-    public static Figure generateFigure() {
+    public  Figure generateFigure() {
         Random random = new Random();
         int r = random.nextInt(4);
         switch (r) {

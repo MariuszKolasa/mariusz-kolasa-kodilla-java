@@ -1,18 +1,33 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameProcessor {
     Scanner scanner = new Scanner(System.in);
-    GameMesseges messeges = new GameMesseges();
+    GameMessages messages = new GameMessages();
     GameProcessValidator validator = new GameProcessValidator();
-    Player player=new Player();
+    Player player;
 
+    public GameProcessor(Player player) {
+        this.player = player;
+    }
 
+    public GameProcessor() {
+    }
 
     public String scan() {
         return scanner.nextLine();
     }
-    public Integer scanInt() {
-        return scanner.nextInt();
+    public Integer scanInt() throws InputMismatchException{
+
+
+        if(scanner.hasNextInt()){
+            return scanner.nextInt();
+        }else{
+            System.out.println("Podaj liczbę rund do rozegrania!")  ;
+            scanner.hasNextInt();
+            return scanner.nextInt();
+        }
+
     }
 
 
@@ -22,59 +37,46 @@ public class GameProcessor {
         int computerScore=0;
 
         for (int i = 0; i < roundsNumber;i++) {
-            int round=0;
-            round++;
             Figure playerFigure;
             Figure computerFigure;
-
-
-            messeges.showMenu2();
-
+            messages.showMenu2();
             validator.endGameValidator();
+            validator.newGameValidator();
             playerFigure=getFigure();
-            computerFigure=FigureGenerator.generateFigure();
+            computerFigure= new FigureGenerator().generateFigure();
+            validator.resultValidator(playerFigure,computerFigure);
             if(validator.resultValidator(playerFigure,computerFigure)>0){
                 playerScore++;
             }else if (validator.resultValidator(playerFigure,computerFigure)<0){
                 computerScore++;
-            } else{
-                playerScore++;
-                computerScore++;
             }
             result=result+validator.resultValidator(playerFigure,computerFigure);
-
+            messages.showRoundResult(playerFigure,computerFigure);
         }
-        messeges.showScores(playerScore,computerScore);
         if(result==0){
-            messeges.showDrawMessage(player.getPlayer(),playerScore,computerScore);
+            messages.showDrawMessage(player.getPlayer(),playerScore,computerScore);
         }else if(result<0){
-            messeges.showComputerWinsMessage(player.getPlayer(),playerScore,computerScore);
+            messages.showComputerWinsMessage(player.getPlayer(),playerScore,computerScore);
         }else{
-            messeges.showPlayerWinsMessage(player.getPlayer(),playerScore,computerScore);
+            messages.showPlayerWinsMessage(player.getPlayer(),playerScore,computerScore);
         }
-
-	}
+        messages.showEndGameMessage();
+    }
     public Figure getFigure() {
-
-
-        GameProcessor gameProcessor= new GameProcessor();
-        int input=gameProcessor.scanInt();
+        int input=scanner.nextInt();
         switch (input) {
             case (1):
-                return new Paper();
-            case (2):
                 return new Rock();
+            case (2):
+                return new Paper();
             case (3):
                 return  new Scissors();
             case (4):
                 return new Lizard();
-            case  (5):
+            case (5):
                 return  new Spock();
-
-
         }
-        GameMesseges messeges =new GameMesseges();
-        messeges.showIncorrectMenuInputMessege();
+        messages.showIncorrectMenuInputMessege();
         return getFigure();
 
     }

@@ -1,4 +1,4 @@
-public class GameMesseges {
+public class GameMessages {
 
 
     public void welcomeMessage(){
