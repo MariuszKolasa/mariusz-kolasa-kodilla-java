@@ -1,10 +1,5 @@
 public class GameMesseges {
-    Player player = new Player();
-    String playerName = player.getPlayer();
-    int playerScore;
-    int computerScore;
-    Figure userFigure;
-    Figure computerFigure;
+
 
     public void welcomeMessage(){
 
@@ -23,7 +18,7 @@ public class GameMesseges {
 
     public void showMenu1() {
         System.out.println("Zasady gry:");
-        System.out.print("Kamień zgniata jaszczurkę." +
+        System.out.println("Kamień zgniata jaszczurkę." +
                 "\n Kamień zgniata nożyce" +
                 "\n Nożyce tną papier" +
                 "\n Papier przykrywa kamień" +
@@ -32,8 +27,9 @@ public class GameMesseges {
                 "\n" + "Nożyce ranią jaszczurkę" +
                 "\n" + "Jaszczurka zjada papier" +
                 "\n" + "Papier udowadnia błąd Spocka" +
-                "\n" + "Spock kruszy kamień");
-        System.out.println("'x' - wyj\u015bcie z gry; 'n' - zacznij now\u0105 gr\u0119;");
+                "\n" + "Spock kruszy kamień" +
+                "\n");
+        System.out.println("'x' - wyj\u015bcie z gry; 'dowolny klawisz' - zacznij now\u0105 gr\u0119;");
 
     }
         public void showMenu2() {
@@ -52,7 +48,7 @@ public class GameMesseges {
     }
 
     public void showNewGameConfirmationMessage() {
-        System.out.println("Rozpocząć nową grę? Aktualny stan gry nie zostanie zachowany. (Y/N)");
+        System.out.println("Rozpocząć nową grę? Aktualny stan gry nie zostanie zachowany. (T/N)");
     }
 
     public void showIncorrectMenuInputMessege(){
@@ -60,7 +56,7 @@ public class GameMesseges {
     }
 
     public void showPlayerWinsMessage(String playerName,Integer playerScore, Integer computerScore){
-        System.out.println(playerName +" wygrywa! "+ playerName+"wygrał(a): "+playerScore+ "rund, Komputer wygrał: "+computerScore+" rund ");
+        System.out.println(playerName +" wygrywa! "+ playerName+" wygrał(a): "+playerScore+ " rund, Komputer wygrał: "+computerScore+" rund ");
     }
 
     public void showComputerWinsMessage(String playerName,Integer playerScore, Integer computerScore){
@@ -71,20 +67,19 @@ public class GameMesseges {
         System.out.println("Remis! " + playerName+"wygrał(a): "+playerScore+ "rund, Komputer wygrał: "+computerScore+" rund ");
         }
 
-    public void showScores(int playerScore, int computerScore) {
-        System.out.println(String.format("-------------------------------------------------" +
+    public void showEndGameMessage() {
+        System.out.println("-------------------------------------------------" +
                 "\nKoniec gry!" +
-                "\nTwoje gygrane: %d Wygrane Komputera: %d" +
-                "\n-------------------------------------------------", playerScore, computerScore));
+                "\n-------------------------------------------------");
         System.out.println("\n'n' - Nowa Gra; 'x' - Zakończ;");
     }
 
     public void showRoundResult(Figure userFigure, Figure computerFigure){
-        System.out.println(String.format(" TY:     %s  ------ vs ------ %s    :Komputer ", userFigure, computerFigure));
+        System.out.println(String.format(" TY:     %s  ------ vs ------ %s    :Komputer ", userFigure.getName(), computerFigure.getName()));
     }
 
     public void incorrectEndOfGameInput(){
-        System.out.println("'n' lub 'x' ...wybierz ponownie: ");
+        System.out.println("'t' lub 'n' ...wybierz ponownie: ");
     }
 }
 
