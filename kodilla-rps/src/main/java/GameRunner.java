@@ -1,9 +1,10 @@
 public class GameRunner {
+    static boolean end=false;
     public static void main(String[] args) {
         GameMessages messages = new GameMessages();
         GameProcessor game= new GameProcessor();
         GameProcessValidator validator = new GameProcessValidator();
-        boolean end = false;
+
 
 
         messages.welcomeMessage();
@@ -11,11 +12,15 @@ public class GameRunner {
 
         while (!end) {
             int roundsNumber;
-
             String name;
+
             messages.showMenu1();
-           if(validator.endGameValidator()){
-              end=true;
+
+
+
+           if(game.scan().equals("x")){
+              end= validator.endGameValidator();
+              if(end)break;
            }
 
             messages.askForPlayerName();
@@ -27,7 +32,14 @@ public class GameRunner {
             roundsNumber = gameProcessor.scanInt();
             validator.roundsNumberValidator(roundsNumber);
             gameProcessor.startGame(roundsNumber);
-            validator.newGameValidator();
+
+            if(game.scan().equals("x")) {
+               end= validator.endGameValidator();
+               if(end) break;
+            }else if (game.scan().equals("n")){
+                validator.newGameValidator();
+                break;
+            }
 
 
         }

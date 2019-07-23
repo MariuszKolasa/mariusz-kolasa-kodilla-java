@@ -2,49 +2,65 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameProcessor {
-    Scanner scanner = new Scanner(System.in);
-    GameMessages messages = new GameMessages();
-    GameProcessValidator validator = new GameProcessValidator();
-    Player player;
+    private Scanner scanner = new Scanner(System.in);
+    private GameMessages messages = new GameMessages();
+    private GameProcessValidator validator = new GameProcessValidator();
+    private Player player;
 
-    public GameProcessor(Player player) {
+    GameProcessor(Player player) {
         this.player = player;
     }
 
-    public GameProcessor() {
+    GameProcessor() {
     }
 
-    public String scan() {
+    String scan() {
         return scanner.nextLine();
     }
-    public Integer scanInt() throws InputMismatchException{
+    Integer scanInt() throws InputMismatchException{
 
 
         if(scanner.hasNextInt()){
             return scanner.nextInt();
         }else{
             System.out.println("Podaj liczbę rund do rozegrania!")  ;
-            scanner.hasNextInt();
+            scanner.nextLine();
             return scanner.nextInt();
         }
 
     }
 
 
-	public void startGame(Integer roundsNumber) {
+	void startGame(Integer roundsNumber) {
         int result=0;
         int playerScore=0;
         int computerScore=0;
+        String verifiedInput;
+        Figure computerFigure;
+        Figure playerFigure;
 
         for (int i = 0; i < roundsNumber;i++) {
-            Figure playerFigure;
-            Figure computerFigure;
+
+
             messages.showMenu2();
-            validator.endGameValidator();
-            validator.newGameValidator();
-            playerFigure=getFigure();
+
+            String input=scan();
+            scan();
+            verifiedInput = validator.inputValidator(input);
+                if (verifiedInput.equals("x")) {
+                GameRunner.end=validator.endGameValidator();
+                break;
+                } else if (verifiedInput.equals("n")) {
+                validator.newGameValidator();
+                }
+
+                playerFigure = getFigure(verifiedInput);
+
+
+
             computerFigure= new FigureGenerator().generateFigure();
             validator.resultValidator(playerFigure,computerFigure);
+
             if(validator.resultValidator(playerFigure,computerFigure)>0){
                 playerScore++;
             }else if (validator.resultValidator(playerFigure,computerFigure)<0){
@@ -62,22 +78,27 @@ public class GameProcessor {
         }
         messages.showEndGameMessage();
     }
-    public Figure getFigure() {
-        int input=scanner.nextInt();
-        switch (input) {
-            case (1):
-                return new Rock();
-            case (2):
-                return new Paper();
-            case (3):
-                return  new Scissors();
-            case (4):
-                return new Lizard();
-            case (5):
-                return  new Spock();
-        }
-        messages.showIncorrectMenuInputMessege();
-        return getFigure();
+
+
+
+
+    private Figure getFigure( String input)  {
+
+            switch (input) {
+                case ("1"):
+                    return new Rock();
+                case ("2"):
+                    return new Paper();
+                case ("3"):
+                    return new Scissors();
+                case ("4"):
+                    return new Lizard();
+                case ("5"):
+                    return new Spock();
+                default:
+                    return null;
+            }
+
 
     }
 

@@ -2,43 +2,61 @@ import java.util.Scanner;
 
 public class GameProcessValidator {
 
-   GameMessages messeges= new GameMessages();
-   Scanner scanner =new Scanner(System.in);
-   int roundsNumber;
-    public void roundsNumberValidator(int roundsNumber){
-        if(roundsNumber <=0)  messeges.showIncorrectRoundsInput();
+    private GameMessages message = new GameMessages();
+    private Scanner scanner =new Scanner(System.in);
+    private String scan;
+     void roundsNumberValidator(int roundsNumber){
+        if(roundsNumber <=0)  message.showIncorrectRoundsInput();
     }
-    public boolean endGameValidator() {
-        boolean end=true;
-        if(scanner.nextLine().equals("x")) {
-                messeges.showQuitConfirmationMessage();
-                if (scanner.nextLine().equals("t")) {
 
-                    end = true;
-                } else if (scanner.nextLine().equals("n")) {
-                    end = false;
-                }else{
-                    messeges.incorrectEndOfGameInput();
-                    endGameValidator();
+    boolean endGameValidator() {
+
+
+                message.showQuitConfirmationMessage();
+                scan=scanner.nextLine();
+
+                if (scan.equals("t")) {
+
+                  return true;
+                } else  if(!scan.equals("n")){
+                    message.incorrectEndOfGameInput();
+                   return endGameValidator();
                 }
+                return false;
+    }
+    String inputValidator(String scan) {
+        if (scan.equals("x") || scan.equals("n") || scan.equals("1")
+                || scan.equals("2") || scan.equals("3") || scan.equals("4") || scan.equals("5")) {
+            System.out.println("wybrano: " +scan);
+            return scan;
+        } else {
+            message.showIncorrectMenuInputMessege();
+
+            return inputValidator(scanner.nextLine());
+
         }
-        return end;
 
     }
+     void newGameValidator() {
+        message.showNewGameConfirmationMessage();
+        scan=scanner.nextLine();
 
-
-    public void newGameValidator() {
-        if(scanner.next().equals("x")) {
-            if (scanner.nextLine().equals("t")) {
+            if (scan.equals("t")) {
+                message.askForNumberOfRounds();
+                int roundsNumber = new GameProcessor().scanInt();
+                scanner.next();
+                roundsNumberValidator(roundsNumber);
                 new GameProcessor().startGame(roundsNumber);
-            } else if (scanner.nextLine() != "t" && scanner.nextLine() != "n") {
-                messeges.incorrectEndOfGameInput();
-                newGameValidator();
-            }
-        }
-    }
 
-    public int resultValidator(Figure playerFigure,Figure computerFigure) {
+            } else if (!scan.equals("n") ) {
+                message.incorrectEndOfGameInput();
+                newGameValidator();
+
+            }
+     }
+
+
+     int resultValidator(Figure playerFigure,Figure computerFigure) {
         Figure rock=new Rock();
         Figure paper=new Paper();
         Figure scissors=new Scissors();
